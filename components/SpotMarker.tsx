@@ -16,27 +16,35 @@ export default function SpotMarker({ spot, tripId }: Props) {
   useEffect(() => {
     const [dx, dy] = spot.labelOffset;
 
-    // 丸の半径・吹き出しのサイズ
     const dotR = 7;
-    const bubbleW = 120;
     const bubbleH = 44;
-    const pad = 10; // SVG のマージン
+    const pad = 8;
+    // 文字数に応じて吹き出し幅を動的に決定（ひらがな1文字 ≈ 18px）
+    const bubbleW = Math.max(80, spot.ruby.length * 18 + 28);
 
-    // SVG 全体のサイズ（引き出し線が収まるように余白を取る）
-    const svgW = Math.abs(dx) + bubbleW + pad * 2;
-    const svgH = Math.abs(dy) + bubbleH + pad * 2;
+    // ドット相対座標で全要素のバウンディングボックスを計算し、SVGサイズを決定
+    const minX = Math.min(-dotR, dx - bubbleW / 2);
+    const maxX = Math.max(dotR, dx + bubbleW / 2);
+    const minY = Math.min(-dotR, dy - bubbleH / 2);
+    const maxY = Math.max(dotR, dy + bubbleH / 2);
 
-    // 丸の位置（アンカー＝latlng の位置）
-    const dotX = dx >= 0 ? pad : pad + Math.abs(dx);
-    const dotY = dy >= 0 ? pad : pad + Math.abs(dy);
+    const svgW = maxX - minX + pad * 2;
+    const svgH = maxY - minY + pad * 2;
+
+    // ドット相対座標 → SVG座標への変換オフセット
+    const offsetX = -minX + pad;
+    const offsetY = -minY + pad;
+
+    const dotX = offsetX;
+    const dotY = offsetY;
 
     // 吹き出しの左上
-    const bx = dotX + dx - bubbleW / 2;
-    const by = dotY + dy - bubbleH / 2;
+    const bx = dx + offsetX - bubbleW / 2;
+    const by = dy + offsetY - bubbleH / 2;
 
     // 引き出し線の終点（吹き出し中央）
-    const lineX2 = dotX + dx;
-    const lineY2 = dotY + dy;
+    const lineX2 = dx + offsetX;
+    const lineY2 = dy + offsetY;
 
     const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${svgW}" height="${svgH}">
