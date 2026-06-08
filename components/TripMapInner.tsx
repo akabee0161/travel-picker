@@ -11,11 +11,12 @@ import SpotMarker from './SpotMarker';
 // center: 地図の中心点 [緯度, 経度]
 //   緯度: 大きいほど北。日本は約 24〜46
 //   経度: 大きいほど東。日本は約 123〜154
-// zoom: ズームレベル（整数・小数可）
+// zoom: ズームレベル（0.1刻みで指定可能）
 //   小さいほど広域（5 = 日本全体が見える程度）
 //   大きいほど拡大（6 = 関東だけ、など）
+//   ※ OSMタイルは整数のみ配信だが Leaflet がスケーリングして補間する
 const MAP_CENTER: [number, number] = [35.5, 136.5];
-const MAP_ZOOM = 5;
+const MAP_ZOOM = 5.2;
 // ──────────────────────────────────────────────────────────
 
 // 外枠矩形 + 日本3島の穴を持つポリゴン
@@ -96,6 +97,7 @@ export default function TripMapInner({ tripId, spots }: Props) {
       style={{ width: '100%', height: '100%' }}
       center={MAP_CENTER}
       zoom={MAP_ZOOM}
+      zoomSnap={0.1}
       dragging={false}
       zoomControl={false}
       scrollWheelZoom={false}
