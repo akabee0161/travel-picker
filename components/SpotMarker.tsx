@@ -16,11 +16,11 @@ export default function SpotMarker({ spot, tripId }: Props) {
   useEffect(() => {
     const [dx, dy] = spot.labelOffset;
 
-    const dotR = 7;
-    const bubbleH = 44;
-    const pad = 8;
-    // 文字数に応じて吹き出し幅を動的に決定（ひらがな1文字 ≈ 18px）
-    const bubbleW = Math.max(80, spot.ruby.length * 18 + 28);
+    const dotR = 6;
+    const bubbleH = 28;
+    const pad = 6;
+    // 文字数に応じて吹き出し幅を動的に決定（ひらがな1文字 ≈ 13px）
+    const bubbleW = Math.max(50, spot.ruby.length * 13 + 20);
 
     // ドット相対座標で全要素のバウンディングボックスを計算し、SVGサイズを決定
     const minX = Math.min(-dotR, dx - bubbleW / 2);
@@ -57,7 +57,7 @@ export default function SpotMarker({ spot, tripId }: Props) {
   <rect x="${bx}" y="${by}" width="${bubbleW}" height="${bubbleH}"
         rx="12" ry="12" fill="#fff176" stroke="#f9a825" stroke-width="2.5"/>
   <text x="${bx + bubbleW / 2}" y="${by + bubbleH / 2 + 6}"
-        text-anchor="middle" font-size="16" font-weight="bold" fill="#333">
+        text-anchor="middle" font-size="13" font-weight="bold" fill="#333">
     ${spot.ruby}
   </text>
 </svg>`;

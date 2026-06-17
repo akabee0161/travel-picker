@@ -6,6 +6,7 @@ import type { Spot } from '@/lib/content';
 import * as L from 'leaflet';
 
 import SpotMarker from './SpotMarker';
+import HomeMarker from './HomeMarker';
 
 // ── 表示範囲の調整はここだけ ──────────────────────────────
 // center: 地図の中心点 [緯度, 経度]
@@ -98,11 +99,11 @@ export default function TripMapInner({ tripId, spots }: Props) {
       center={MAP_CENTER}
       zoom={MAP_ZOOM}
       zoomSnap={0.1}
-      dragging={false}
+      dragging={true}
       zoomControl={false}
-      scrollWheelZoom={false}
-      doubleClickZoom={false}
-      touchZoom={false}
+      scrollWheelZoom={true}
+      doubleClickZoom={true}
+      touchZoom={true}
       keyboard={false}
     >
       <TileLayer
@@ -111,6 +112,7 @@ export default function TripMapInner({ tripId, spots }: Props) {
       />
       <JapanOverlay />
       <MapReadyNotifier />
+      <HomeMarker />
       {spots.map((spot) => (
         <SpotMarker key={spot.id} spot={spot} tripId={tripId} />
       ))}
