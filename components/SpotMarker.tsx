@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import type { Spot } from '@/lib/content';
+import { bubbleWidth, BUBBLE_HEIGHT } from '@/lib/labelLayout';
+import { useLabelOffset } from './LabelLayoutProvider';
 
 interface Props {
   spot: Spot;
@@ -12,15 +14,15 @@ interface Props {
 
 export default function SpotMarker({ spot, tripId }: Props) {
   const map = useMap();
+  // 重なり回避で再計算されたオフセット（未計算時は spot.labelOffset）
+  const [dx, dy] = useLabelOffset(spot);
 
   useEffect(() => {
-    const [dx, dy] = spot.labelOffset;
-
     const dotR = 6;
-    const bubbleH = 28;
+    const bubbleH = BUBBLE_HEIGHT;
     const pad = 6;
     // 文字数に応じて吹き出し幅を動的に決定（ひらがな1文字 ≈ 13px）
-    const bubbleW = Math.max(50, spot.ruby.length * 13 + 20);
+    const bubbleW = bubbleWidth(spot.ruby.length);
 
     // ドット相対座標で全要素のバウンディングボックスを計算し、SVGサイズを決定
     const minX = Math.min(-dotR, dx - bubbleW / 2);
@@ -74,7 +76,7 @@ export default function SpotMarker({ spot, tripId }: Props) {
     return () => {
       map.removeLayer(marker);
     };
-  }, [map, spot, tripId]);
+  }, [map, spot, tripId, dx, dy]);
 
   return null;
 }

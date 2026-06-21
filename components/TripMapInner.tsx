@@ -7,6 +7,7 @@ import * as L from 'leaflet';
 
 import SpotMarker from './SpotMarker';
 import HomeMarker from './HomeMarker';
+import LabelLayoutProvider from './LabelLayoutProvider';
 
 // ── 表示範囲の調整はここだけ ──────────────────────────────
 // center: 地図の中心点 [緯度, 経度]
@@ -113,9 +114,11 @@ export default function TripMapInner({ tripId, spots }: Props) {
       <JapanOverlay />
       <MapReadyNotifier />
       <HomeMarker />
-      {spots.map((spot) => (
-        <SpotMarker key={spot.id} spot={spot} tripId={tripId} />
-      ))}
+      <LabelLayoutProvider spots={spots}>
+        {spots.map((spot) => (
+          <SpotMarker key={spot.id} spot={spot} tripId={tripId} />
+        ))}
+      </LabelLayoutProvider>
     </MapContainer>
   );
 }
