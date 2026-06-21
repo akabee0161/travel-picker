@@ -1,7 +1,7 @@
 ---
 id: "fuji-safari"
 name: "富士サファリパーク"
-ruby: "ふじさふぁりぱーく"
+ruby: "ふじ サファリパーク"
 area: "静岡県"
 order: 9
 latlng: [35.2722, 138.7291]

@@ -5,7 +5,7 @@ ruby: "きょうりゅうはくぶつかん"
 area: "福井県"
 order: 8
 latlng: [35.9338, 136.4983]
-labelOffset: [-95, -45]
+labelOffset: [-95, -85]
 photos: []
 points:
   - "ほんものの恐竜のほねがみられる"

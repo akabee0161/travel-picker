@@ -1,11 +1,11 @@
 ---
 id: "minami-chita"
 name: "南知多ビーチランド"
-ruby: "みなみちたびーちらんど"
+ruby: "みなみちた ビーチランド"
 area: "愛知県"
 order: 6
 latlng: [34.7238, 136.9440]
-labelOffset: [70, 35]
+labelOffset: [10, 85]
 photos: []
 points:
   - "いるかやあしかのショーがみられる"

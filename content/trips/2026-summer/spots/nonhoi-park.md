@@ -1,11 +1,11 @@
 ---
 id: "nonhoi-park"
 name: "のんほいパーク"
-ruby: "のんほいぱーく"
+ruby: "のんほいパーク"
 area: "愛知県"
 order: 7
 latlng: [34.7597, 137.3773]
-labelOffset: [65, -40]
+labelOffset: [65, 40]
 photos: []
 points:
   - "どうぶつえん・しょくぶつえん・のりものがある"

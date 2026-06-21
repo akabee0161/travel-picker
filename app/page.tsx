@@ -7,9 +7,8 @@ export default function TopPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-200 to-yellow-100 p-8">
       <h1 className="text-5xl font-bold text-center text-sky-700 mb-4 drop-shadow">
-        🌍 りょこうをえらぼう！
+        りょこう先　そうだんページ
       </h1>
-      <p className="text-2xl text-center text-gray-600 mb-12">いきたいりょこうをタップしてね</p>
 
       {trips.length === 0 ? (
         <p className="text-center text-xl text-gray-400">りょこうがまだないよ</p>

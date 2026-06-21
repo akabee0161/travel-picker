@@ -1,11 +1,11 @@
 ---
 id: "ayu-park"
 name: "清流長良川あゆパーク"
-ruby: "せいりゅうながらがわあゆぱーく"
+ruby: "あゆパーク"
 area: "岐阜県"
 order: 11
 latlng: [35.7494, 136.9426]
-labelOffset: [75, -40]
+labelOffset: [75, -80]
 photos: []
 points:
   - "ながらがわのあゆをつかまえられる"

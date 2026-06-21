@@ -5,7 +5,7 @@ ruby: "かいゆうかん"
 area: "大阪府"
 order: 2
 latlng: [34.6549, 135.4290]
-labelOffset: [-80, -40]
+labelOffset: [-40, 80]
 photos: []
 points:
   - "おおきなジンベエザメがいる"

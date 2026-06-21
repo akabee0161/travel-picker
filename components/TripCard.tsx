@@ -14,7 +14,6 @@ export default function TripCard({ trip, spotCount }: Props) {
     >
       <p className="text-2xl font-bold text-orange-500 mb-2">{trip.date}</p>
       <p className="text-4xl font-bold text-gray-800 mb-4">{trip.title}</p>
-      <p className="text-xl text-gray-500">{spotCount}けんのこうほ</p>
     </Link>
   );
 }
