@@ -31,6 +31,7 @@ export default function SpotDetail({ spot, tripId }: Props) {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 700px"
+                priority
               />
             </div>
           ))}
@@ -47,7 +48,7 @@ export default function SpotDetail({ spot, tripId }: Props) {
       {/* おすすめポイント */}
       {spot.points.length > 0 && (
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-orange-500 mb-2">⭐ おすすめポイント</h3>
+          <h3 className="text-2xl font-bold text-orange-500 mb-2">⭐ ポイント</h3>
           <ul className="flex flex-col gap-2">
             {spot.points.map((pt, i) => (
               <li key={i} className="text-xl text-gray-700 flex items-start gap-2">
@@ -62,7 +63,7 @@ export default function SpotDetail({ spot, tripId }: Props) {
       {/* 追加情報 */}
       {spot.extras.length > 0 && (
         <div>
-          <h3 className="text-2xl font-bold text-sky-600 mb-2">📋 くわしい情報</h3>
+          <h3 className="text-2xl font-bold text-sky-600 mb-2">📋 とおさ</h3>
           <ul className="flex flex-col gap-2">
             {spot.extras.map((ex, i) => (
               <li key={i} className="text-xl text-gray-700 flex items-start gap-2">

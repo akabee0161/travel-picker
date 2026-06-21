@@ -73,8 +73,8 @@ order: 1                 # 地図・一覧での表示順（小さい順）
 latlng: [34.6549, 135.4290]   # 緯度・経度（10進数）
 labelOffset: [-80, -40]  # 地図上の吹き出しオフセット [x, y]（ピクセル）
 photos:
-  - "1.jpg"              # public/photos/<tripId>/<spotId>/ 以下のファイル名
-  - "2.jpg"
+  - /photos/2026-summer/kaiyukan/1.jpg   # /photos/<tripId>/<spotId>/<番号>.<拡張子>
+  - /photos/2026-summer/kaiyukan/2.jpg
 points:
   - "おおきなジンベエザメがいる"   # 箇条書きのポイント（ひらがな主体）
   - "にほんさいだいきゅうのすいぞくかん"
@@ -95,7 +95,7 @@ extras:
 | `order` | ○ | 表示順（数字が小さいほど先） |
 | `latlng` | ○ | 緯度・経度の配列 `[緯度, 経度]` |
 | `labelOffset` | ○ | 吹き出し位置調整 `[x, y]`（他の吹き出しと重なる場合に調整） |
-| `photos` | ○ | 写真ファイル名の配列（空配列 `[]` でも可） |
+| `photos` | ○ | 写真の **ルートからのフルパス** の配列（例: `/photos/2026-summer/kaiyukan/1.jpg`）。写真なしは `[]` |
 | `points` | ○ | 特徴・見どころ（箇条書き・ひらがな主体） |
 | `extras` | ○ | 補足情報（アクセス・季節など）。空配列 `[]` でも可 |
 | 本文 | ○ | 1〜2文のひらがな説明文 |
@@ -106,11 +106,22 @@ extras:
 
 ```
 public/photos/<tripId>/<spotId>/1.jpg
-public/photos/<tripId>/<spotId>/2.jpg
+public/photos/<tripId>/<spotId>/2.webp
 ```
 
-- `photos` フィールドに列挙したファイル名と一致させる
-- ファイルは `jpg` 推奨（大きすぎる場合は事前にリサイズ・圧縮しておく）
+`photos` フィールドには **`/photos/` から始まるフルパス** を記述します。ファイル名だけでは表示されません。
+
+```yaml
+# ○ 正しい例
+photos:
+  - /photos/2026-summer/ayu-park/1.webp
+  - /photos/2026-summer/ayu-park/2.webp
+
+# × 間違い（ファイル名だけでは表示されない）
+photos: [1, 2]
+```
+
+- 拡張子は `jpg` / `webp` どちらも使用可（大きすぎる場合は事前にリサイズ・圧縮しておく）
 - 写真なしのスポットは `photos: []` とする
 
 ---
