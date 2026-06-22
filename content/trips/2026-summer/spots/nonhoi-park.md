@@ -3,7 +3,7 @@ id: "nonhoi-park"
 name: "のんほいパーク"
 ruby: "のんほいパーク"
 area: "愛知県"
-order: 7
+order: 8
 latlng: [34.7597, 137.3773]
 labelOffset: [65, 40]
 photos:

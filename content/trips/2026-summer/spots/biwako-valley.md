@@ -3,7 +3,7 @@ id: "biwako-valley"
 name: "琵琶湖バレイ"
 ruby: "びわこバレイ"
 area: "滋賀県"
-order: 4
+order: 3
 latlng: [35.1314, 135.8898]
 labelOffset: [-75, -45]
 photos:

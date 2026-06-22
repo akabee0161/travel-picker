@@ -3,7 +3,7 @@ id: "dinosaur-museum"
 name: "恐竜博物館"
 ruby: "きょうりゅう はくぶつかん"
 area: "福井県"
-order: 8
+order: 4
 latlng: [35.9338, 136.4983]
 labelOffset: [-95, -85]
 photos:

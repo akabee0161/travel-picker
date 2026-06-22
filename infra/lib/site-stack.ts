@@ -58,6 +58,7 @@ export class SiteStack extends cdk.Stack {
       destinationBucket: bucket,
       distribution,
       distributionPaths: ['/*'],
+      memoryLimit: 512,
     });
 
     // CloudFront URL を出力

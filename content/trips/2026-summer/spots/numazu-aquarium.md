@@ -3,7 +3,7 @@ id: "numazu-aquarium"
 name: "沼津港深海水族館"
 ruby: "しんかい すいぞくかん"
 area: "静岡県"
-order: 10
+order: 9
 latlng: [35.1019, 138.8617]
 labelOffset: [75, 45]
 photos:

@@ -3,7 +3,7 @@ id: "ayu-park"
 name: "清流長良川あゆパーク"
 ruby: "あゆパーク"
 area: "岐阜県"
-order: 11
+order: 1
 latlng: [35.7494, 136.9426]
 labelOffset: [75, -80]
 photos:

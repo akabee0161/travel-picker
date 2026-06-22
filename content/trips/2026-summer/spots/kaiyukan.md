@@ -3,7 +3,7 @@ id: "kaiyukan"
 name: "海遊館"
 ruby: "かいゆうかん"
 area: "大阪府"
-order: 2
+order: 6
 latlng: [34.6549, 135.4290]
 labelOffset: [-40, 80]
 photos:

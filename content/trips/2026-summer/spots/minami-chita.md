@@ -3,7 +3,7 @@ id: "minami-chita"
 name: "南知多ビーチランド"
 ruby: "みなみちた ビーチランド"
 area: "愛知県"
-order: 6
+order: 7
 latlng: [34.7238, 136.9440]
 labelOffset: [10, 85]
 photos:
