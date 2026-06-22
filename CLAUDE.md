@@ -13,15 +13,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev           # 開発サーバー (localhost:3000)
 npm run build         # SSG ビルド → out/
+npm test              # ユニットテスト（lib/**/*.test.ts のみ・vitest）
 
 # PDF 生成は2ステップ（ローカル HTTP サーバーが先に必要）
 npm run build
 npx serve out -l 4000 &   # バックグラウンドで起動
 node scripts/generate-pdf.mjs
 
-# インフラ（infra/ 配下で実行）
+# デプロイ（CI/CD なし・手動のみ）
+npm run deploy        # next build + PDF 生成 + cdk deploy を一括実行
+# インフラのみ変更する場合
 cd infra && npx cdk deploy
 ```
+
+> **テスト範囲**：`npm test` は `lib/` 配下のユーティリティのみ。コンポーネントテスト・E2E テストは未整備。
 
 ## アーキテクチャの制約
 
@@ -29,6 +34,7 @@ cd infra && npx cdk deploy
 - **Leaflet は Client-Only**：`next/dynamic` + `ssr: false` で読み込む（SSR 不可）。地図コンポーネントを新規作成する場合も同様。
 - **末尾スラッシュ必須**：`trailingSlash: true` のため、内部リンクはすべて `/trips/[tripId]/` のように末尾 `/` をつける。
 - **マーカーのリンクは素の `<a>` タグ**：`SpotMarker.tsx` の DivIcon 内では `router.push()` でなく `<a href="/.../">` を使う（静的 export との親和性のため）。
+- **Tailwind CSS v4**：`@import "tailwindcss"` を `globals.css` に記述する（v3 の `@tailwind base` 等は不可）。`tailwind.config.js` は不要で設定は `postcss.config.mjs` の `@tailwindcss/postcss` に集約。
 
 ## コンテンツの追加方法
 

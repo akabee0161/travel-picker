@@ -158,15 +158,37 @@ node scripts/generate-pdf.mjs
 
 ## インフラ（AWS）
 
-```bash
-cd infra
-npm install
-npx cdk deploy
-```
-
 - S3 + CloudFront OAC で `out/` を静的配信
 - 独自ドメインなし（`*.cloudfront.net` の URL で運用）
 - `cloudfront-rewrite.js`（CloudFront Function）が `index.html` を正しく配信するために必要
+
+### 初回セットアップ
+
+```bash
+cd infra
+npm install
+npx cdk bootstrap   # AWS アカウント・リージョンごとに初回のみ必要
+npx cdk deploy
+```
+
+### コンテンツ更新のデプロイ（通常の手順）
+
+CI/CD は未構成のため、**手動でデプロイ**する必要があります。
+
+```bash
+npm run deploy
+# 内部: next build && node scripts/generate-pdf.mjs && cd infra && npx cdk deploy
+```
+
+または `out/` ディレクトリのみ S3 に同期する場合（インフラ変更なし）：
+
+```bash
+npm run build
+aws s3 sync out/ s3://<バケット名> --delete
+aws cloudfront create-invalidation --distribution-id <ディストリビューションID> --paths "/*"
+```
+
+> **前提**：実行環境に AWS 認証情報（`aws configure` またはプロファイル）が設定されていること。
 
 ---
 
